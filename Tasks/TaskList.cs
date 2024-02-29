@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Tasks.Console;
 
 namespace Tasks
 {
-	public sealed class TaskList
+    public sealed class TaskList
 	{
 		private const string QUIT = "quit";
 
@@ -93,7 +94,7 @@ namespace Tasks
 		{
 			if (!tasks.TryGetValue(project, out IList<Task> projectTasks))
 			{
-				Console.WriteLine("Could not find a project with the name \"{0}\".", project);
+				System.Console.WriteLine("Could not find a project with the name \"{0}\".", project);
 				return;
 			}
 			projectTasks.Add(new Task { Id = NextId(), Description = description, Done = false });

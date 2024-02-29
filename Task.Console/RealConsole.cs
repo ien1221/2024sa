@@ -1,27 +1,26 @@
-using System;
-
-namespace Tasks
+﻿
+namespace Tasks.Console
 {
 	public class RealConsole : IConsole
 	{
 		public string ReadLine()
 		{
-			return Console.ReadLine();
+			return System.Console.ReadLine();
 		}
 
 		public void Write(string format, params object[] args)
 		{
-			Console.Write(format, args);
+			System.Console.Write(format, args);
 		}
 
 		public void WriteLine(string format, params object[] args)
 		{
-			Console.WriteLine(format, args);
+			System.Console.WriteLine(format, args);
 		}
 
 		public void WriteLine()
 		{
-			Console.WriteLine();
+			System.Console.WriteLine();
 		}
 	}
 }
