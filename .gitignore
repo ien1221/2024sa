@@ -1,5 +1,2 @@
-.vs
-bin
-obj
-packages
-*.suo
+target
+*.iml
