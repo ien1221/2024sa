@@ -7,7 +7,7 @@ public class UncheckCommand implements ICommand{
     public UncheckCommand(String command){
         _command = command;
     }
-    public void execute(TaskList taskList){
-        taskList.setDone(_command, false);
+    public String execute(TaskList taskList){
+        return taskList.setDone(_command, false);
     }
 }

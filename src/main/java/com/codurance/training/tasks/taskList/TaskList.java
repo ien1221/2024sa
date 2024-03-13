@@ -28,17 +28,20 @@ public class TaskList {
         return _tasks.containsKey(projectName);
     }
 
-    public void setDone(String idString, boolean done){
+    public String setDone(String idString, boolean done){
         int id = Integer.parseInt(idString);
         for (Map.Entry<String, List<Task>> project : _tasks.entrySet()) {
             for (Task task : project.getValue()) {
                 if (task.getId() == id) {
                     task.setDone(done);
-                    return;
+                    return "";
                 }
             }
         }
-//        out.printf("Could not find a task with an ID of %d.", id);
-//        out.println();
+        return String.format("Could not find a task with an ID of %d.\n", id);
+    }
+
+    public Map<String, List<Task>> getTasks() {
+        return _tasks;
     }
 }

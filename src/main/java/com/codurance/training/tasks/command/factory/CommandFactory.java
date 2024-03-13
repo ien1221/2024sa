@@ -28,7 +28,7 @@ public class CommandFactory {
                 return new HelpCommand();
             default:
 //                error(command);
-                return new ErrorCommand();
+                return new ErrorCommand(command);
         }
     }
 
@@ -40,6 +40,6 @@ public class CommandFactory {
         } else if (subcommand.equals("task")) {
             return new AddTaskCommand(subcommandRest[1]);
         }
-        return new ErrorCommand();
+        return new ErrorCommand(subcommand);
     }
 }

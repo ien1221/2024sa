@@ -7,7 +7,7 @@ public class CheckCommand implements ICommand{
     public CheckCommand(String command){
         _command = command;
     }
-    public void execute(TaskList taskList){
-        taskList.setDone(_command, true);
+    public String execute(TaskList taskList){
+        return taskList.setDone(_command, true);
     }
 }

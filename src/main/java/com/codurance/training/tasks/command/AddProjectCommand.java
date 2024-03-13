@@ -7,7 +7,8 @@ public class AddProjectCommand implements ICommand{
     public AddProjectCommand(String command){
         _command = command;
     }
-    public void execute(TaskList taskList){
+    public String execute(TaskList taskList){
         taskList.addProject(_command);
+        return "";
     }
 }

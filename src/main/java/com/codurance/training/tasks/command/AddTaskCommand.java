@@ -7,12 +7,13 @@ public class AddTaskCommand implements ICommand{
     public AddTaskCommand(String commandRest){
         _command = commandRest;
     }
-    public void execute(TaskList taskList){
+    public String execute(TaskList taskList){
         String[] projectTask = _command.split(" ", 2);
         if(!taskList.isProjectExist(projectTask[0])){
-//            return String.format("Could not find a project with the name \"%s\".", project);
+            return String.format("Could not find a project with the name \"%s\".", projectTask[0]);
         }else{
             taskList.addTask(projectTask[0], projectTask[1]);//[0]project [1]description
+            return "";
         }
     }
 }
