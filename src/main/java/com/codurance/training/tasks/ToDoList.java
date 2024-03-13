@@ -3,6 +3,7 @@ package com.codurance.training.tasks;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
 import com.codurance.training.tasks.IO.Output;
 import com.codurance.training.tasks.command.ICommand;
@@ -14,24 +15,27 @@ public final class ToDoList implements Runnable {
 
     private final TaskList taskList = new TaskList();
     private final BufferedReader in;
-    private final Output _output;
+    private final PrintWriter _output;
+//    private final Output _output;
 
-//    private long lastId = 0;
 
     public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        Output out = new Output();
+        PrintWriter out = new PrintWriter(System.out);
+//        Output out = new Output();
         new ToDoList(in, out).run();
     }
 
-    public ToDoList(BufferedReader reader, Output output) {
+    public ToDoList(BufferedReader reader, PrintWriter output) {
         this.in = reader;
         _output = output;
     }
 
     public void run() {
         while (true) {
-            _output.printPrompt();
+            _output.print("> ");
+            _output.flush();
+//            _output.printPrompt();
             String command;
             try {
                 command = in.readLine();
@@ -50,7 +54,9 @@ public final class ToDoList implements Runnable {
         ICommand command = commandFactory.createCommand(commandLine);
         String result =  command.execute(taskList);
         if (!result.isEmpty()){
-            _output.printResult(result);
+            _output.print(result);
+            _output.flush();
+//            _output.printResult(result);
         }
     }
 }

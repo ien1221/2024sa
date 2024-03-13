@@ -8,6 +8,6 @@ public class ErrorCommand implements ICommand{
         _command = command;
     }
     public String execute(TaskList taskList){
-        return String.format("I don't know what the command \"%s\" is.\n", _command);
+        return String.format("I don't know what the command \"%s\" is.\r\n", _command);
     }
 }

@@ -38,7 +38,7 @@ public class TaskList {
                 }
             }
         }
-        return String.format("Could not find a task with an ID of %d.\n", id);
+        return String.format("Could not find a task with an ID of %d.\r\n", id);
     }
 
     public Map<String, List<Task>> getTasks() {

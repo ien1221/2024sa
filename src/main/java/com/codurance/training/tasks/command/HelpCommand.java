@@ -4,11 +4,11 @@ import com.codurance.training.tasks.taskList.TaskList;
 
 public class HelpCommand implements ICommand{
     public String execute(TaskList taskList){
-        return "Commands:" + "\n" +
-                "  show" + "\n" +
-                "  add project <project name>" + "\n" +
-                "  add task <project name> <task description>" + "\n" +
-                "  check <task ID>" + "\n" +
-                "  uncheck <task ID>" + "\n";
+        return "Commands:" + "\r\n" +
+                "  show" + "\r\n" +
+                "  add project <project name>" + "\r\n" +
+                "  add task <project name> <task description>" + "\r\n" +
+                "  check <task ID>" + "\r\n" +
+                "  uncheck <task ID>" + "\r\n";
     }
 }
