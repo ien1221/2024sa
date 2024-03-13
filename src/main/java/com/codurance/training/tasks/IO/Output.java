@@ -5,8 +5,8 @@ import java.io.PrintWriter;
 public class Output {
     private final PrintWriter _out;
 
-    public Output(){
-        _out = new PrintWriter(System.out);
+    public Output(PrintWriter out){
+        _out = out;
     }
 
     public void printPrompt(){
