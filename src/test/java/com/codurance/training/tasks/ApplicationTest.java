@@ -7,7 +7,6 @@ import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.io.PrintWriter;
 
-import com.codurance.training.tasks.IO.Output;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public final class ApplicationTest {
     public ApplicationTest() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(new PipedInputStream(inStream)));
         PrintWriter out = new PrintWriter(new PipedOutputStream(outStream), true);
-//        Output output = new Output();
+//        ConsoleOutput output = new ConsoleOutput();
         ToDoList toDoList = new ToDoList(in, out);
         applicationThread = new Thread(toDoList);
     }
@@ -75,7 +74,7 @@ public final class ApplicationTest {
         execute("add task training SOLID");
         execute("add task training Coupling and Cohesion");
         execute("add task training Primitive Obsession");
-        execute("add task training Outside-In TDD");
+        execute("add task training Outside-Input TDD");
         execute("add task training Interaction-Driven Design");
 
         execute("check 1");
@@ -94,7 +93,7 @@ public final class ApplicationTest {
                 "    [ ] 4: SOLID",
                 "    [x] 5: Coupling and Cohesion",
                 "    [x] 6: Primitive Obsession",
-                "    [ ] 7: Outside-In TDD",
+                "    [ ] 7: Outside-Input TDD",
                 "    [ ] 8: Interaction-Driven Design",
                 ""
         );

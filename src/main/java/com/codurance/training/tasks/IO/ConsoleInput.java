@@ -3,9 +3,9 @@ package com.codurance.training.tasks.IO;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class Input {
+public class ConsoleInput {
     private final BufferedReader _input;
-    public Input(BufferedReader input){
+    public ConsoleInput(BufferedReader input){
         _input = input;
     }
 

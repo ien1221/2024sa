@@ -4,18 +4,18 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-import com.codurance.training.tasks.IO.Input;
-import com.codurance.training.tasks.IO.Output;
-import com.codurance.training.tasks.adapter.CommandPresenter;
-import com.codurance.training.tasks.usecase.ICommand;
-import com.codurance.training.tasks.adapter.CommandController;
+import com.codurance.training.tasks.IO.ConsoleInput;
+import com.codurance.training.tasks.IO.ConsoleOutput;
+import com.codurance.training.tasks.adapter.controller.Controller;
+import com.codurance.training.tasks.adapter.presenter.CommandPresenter;
+import com.codurance.training.tasks.adapter.ControllerFactory;
 
 public final class ToDoList implements Runnable {
     private static final String QUIT = "quit";
 
 //    private final TaskList taskList = new TaskList();
-    private final Output _output;
-    private final Input _input;
+    private final ConsoleOutput _output;
+    private final ConsoleInput _input;
 
 
     public static void main(String[] args) throws Exception {
@@ -25,8 +25,8 @@ public final class ToDoList implements Runnable {
     }
 
     public ToDoList(BufferedReader reader, PrintWriter output) {
-        _input = new Input(reader);
-        _output = new Output(output);
+        _input = new ConsoleInput(reader);
+        _output = new ConsoleOutput(output);
     }
 
     public void run() {
@@ -41,9 +41,9 @@ public final class ToDoList implements Runnable {
     }
 
     private void execute(String commandLine) {
-        CommandController commandController = new CommandController();
-        ICommand command = commandController.createCommand(commandLine);
-        CommandPresenter presenter = new CommandPresenter(command.execute());
+        ControllerFactory controllerFactory = new ControllerFactory();
+        Controller controller = controllerFactory.createController(commandLine);
+        CommandPresenter presenter = new CommandPresenter(controller.execute());
         if (presenter.hasResult()){
             _output.printResult(presenter.getResult());
         }

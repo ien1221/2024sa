@@ -1,23 +1,21 @@
-package com.codurance.training.tasks.usecase;
+package com.codurance.training.tasks.usecase.command;
 
 import com.codurance.training.tasks.entity.Task;
 import com.codurance.training.tasks.entity.TaskList;
-import com.codurance.training.tasks.usecase.out.CheckOutputDto;
-import com.codurance.training.tasks.usecase.out.IOutputDto;
+import com.codurance.training.tasks.usecase.input.CheckInput;
+import com.codurance.training.tasks.usecase.out.CheckOutput;
+import com.codurance.training.tasks.usecase.out.Output;
 
 import java.util.List;
 import java.util.Map;
 
-public class CheckCommand implements ICommand{
-    private final String _command;
-    public CheckCommand(String command){
-        _command = command;
-    }
-    public IOutputDto execute(){
+public class CheckCommand implements Command<CheckInput> {
+    public CheckCommand(){}
+    public Output execute(CheckInput input){
         TaskList taskList = TaskList.getInstance();
-        CheckOutputDto result = new CheckOutputDto();
+        CheckOutput result = new CheckOutput();
 
-        int id = Integer.parseInt(_command);
+        int id = input.getId();
         for (Map.Entry<String, List<Task>> project : taskList.getTasks().entrySet()) {
             for (Task task : project.getValue()) {
                 if (task.getId() == id) {

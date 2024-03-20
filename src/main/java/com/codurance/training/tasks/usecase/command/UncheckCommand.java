@@ -1,23 +1,21 @@
-package com.codurance.training.tasks.usecase;
+package com.codurance.training.tasks.usecase.command;
 
 import com.codurance.training.tasks.entity.Task;
 import com.codurance.training.tasks.entity.TaskList;
-import com.codurance.training.tasks.usecase.out.IOutputDto;
-import com.codurance.training.tasks.usecase.out.UncheckOutputDto;
+import com.codurance.training.tasks.usecase.input.UncheckInput;
+import com.codurance.training.tasks.usecase.out.Output;
+import com.codurance.training.tasks.usecase.out.UncheckOutput;
 
 import java.util.List;
 import java.util.Map;
 
-public class UncheckCommand implements ICommand{
-    private final String _command;
-    public UncheckCommand(String command){
-        _command = command;
-    }
-    public IOutputDto execute(){
+public class UncheckCommand implements Command<UncheckInput> {
+    public UncheckCommand(){}
+    public Output execute(UncheckInput input){
         TaskList taskList = TaskList.getInstance();
-        UncheckOutputDto result = new UncheckOutputDto();
+        UncheckOutput result = new UncheckOutput();
 
-        int id = Integer.parseInt(_command);
+        int id = input.getId();
         for (Map.Entry<String, List<Task>> project : taskList.getTasks().entrySet()) {
             for (Task task : project.getValue()) {
                 if (task.getId() == id) {

@@ -1,5 +1,5 @@
 package com.codurance.training.tasks.usecase.out;
 
-public interface IOutputDto {
+public interface Output {
     String getResult();
 }

@@ -1,8 +1,8 @@
 package com.codurance.training.tasks.usecase.out;
 
-public class ShowOutputDto implements IOutputDto{
+public class CheckOutput implements Output {
     private String _result = "";
-    public ShowOutputDto(){}
+    public CheckOutput(){}
 
     @Override
     public String getResult(){

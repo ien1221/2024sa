@@ -42,11 +42,9 @@ public class TaskList {
             for (Task task : project.getValue()) {
                 if (task.getId() == id) {
                     task.setDone(done);
-//                    return "";
                 }
             }
         }
-//        return String.format("Could not find a task with an ID of %d.\r\n", id);
     }
 
     public void setDone(Task task, boolean done){

@@ -1,10 +1,10 @@
-package com.codurance.training.tasks.adapter;
+package com.codurance.training.tasks.adapter.presenter;
 
-import com.codurance.training.tasks.usecase.out.IOutputDto;
+import com.codurance.training.tasks.usecase.out.Output;
 
 public class CommandPresenter {
-    private IOutputDto _result;
-    public CommandPresenter(IOutputDto result){
+    private final Output _result;
+    public CommandPresenter(Output result){
         _result = result;
     }
 

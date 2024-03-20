@@ -1,18 +1,19 @@
-package com.codurance.training.tasks.usecase;
+package com.codurance.training.tasks.usecase.command;
 
-import com.codurance.training.tasks.usecase.out.HelpOutputDto;
-import com.codurance.training.tasks.usecase.out.IOutputDto;
+import com.codurance.training.tasks.usecase.input.HelpInput;
+import com.codurance.training.tasks.usecase.out.HelpOutput;
+import com.codurance.training.tasks.usecase.out.Output;
 
-public class HelpCommand implements ICommand{
+public class HelpCommand implements Command<HelpInput> {
     @Override
-    public IOutputDto execute(){
+    public Output execute(HelpInput input){
         String message = "Commands:" + System.lineSeparator() +
                         "  show" + System.lineSeparator() +
                         "  add project <project name>" + System.lineSeparator() +
                         "  add task <project name> <task description>" + System.lineSeparator() +
                         "  check <task ID>" + System.lineSeparator() +
                         "  uncheck <task ID>" + System.lineSeparator();
-        HelpOutputDto result = new HelpOutputDto();
+        HelpOutput result = new HelpOutput();
         result.setResult(message);
         return result;
     }

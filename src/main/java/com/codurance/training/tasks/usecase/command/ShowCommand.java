@@ -1,15 +1,16 @@
-package com.codurance.training.tasks.usecase;
+package com.codurance.training.tasks.usecase.command;
 
 import com.codurance.training.tasks.entity.Task;
 import com.codurance.training.tasks.entity.TaskList;
-import com.codurance.training.tasks.usecase.out.IOutputDto;
-import com.codurance.training.tasks.usecase.out.ShowOutputDto;
+import com.codurance.training.tasks.usecase.input.Input;
+import com.codurance.training.tasks.usecase.out.Output;
+import com.codurance.training.tasks.usecase.out.ShowOutput;
 
 import java.util.List;
 import java.util.Map;
 
-public class ShowCommand implements ICommand{
-    public IOutputDto execute(){
+public class ShowCommand implements Command {
+    public Output execute(Input input){
         StringBuilder message = new StringBuilder();
         for (Map.Entry<String, List<Task>> project : TaskList.getInstance().getTasks().entrySet()) {
             message.append(project.getKey()).append(System.lineSeparator());
@@ -19,7 +20,7 @@ public class ShowCommand implements ICommand{
             }
             message.append(System.lineSeparator());
         }
-        ShowOutputDto result = new ShowOutputDto();
+        ShowOutput result = new ShowOutput();
         result.setResult(message.toString());
         return result;
     }

@@ -2,10 +2,10 @@ package com.codurance.training.tasks.IO;
 
 import java.io.PrintWriter;
 
-public class Output {
+public class ConsoleOutput {
     private final PrintWriter _out;
 
-    public Output(PrintWriter out){
+    public ConsoleOutput(PrintWriter out){
         _out = out;
     }
 
