@@ -1,33 +1,25 @@
-package com.codurance.training.tasks.command.factory;
+package com.codurance.training.tasks.adapter;
 
-import com.codurance.training.tasks.command.*;
-import com.codurance.training.tasks.taskList.TaskList;
+import com.codurance.training.tasks.usecase.*;
 
-public class CommandFactory {
-    public CommandFactory(){}
+public class CommandController {
+    public CommandController(){}
 
     public ICommand createCommand(String commandLine){
         String[] commandRest = commandLine.split(" ", 2);
         String command = commandRest[0];
         switch (command) {
             case "show":
-//                show();
                 return new ShowCommand();
             case "add":
-//                add(commandRest[1]);
-//                return new AddProjectCommand(commandRest[1]);
                 return Add(commandRest[1]);
             case "check":
-//                check(commandRest[1]);
                 return new CheckCommand(commandRest[1]);
             case "uncheck":
-//                uncheck(commandRest[1]);
                 return new UncheckCommand(commandRest[1]);
             case "help":
-//                help();
                 return new HelpCommand();
             default:
-//                error(command);
                 return new ErrorCommand(command);
         }
     }

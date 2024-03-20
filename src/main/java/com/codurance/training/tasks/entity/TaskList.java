@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.taskList;
+package com.codurance.training.tasks.entity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -8,8 +8,16 @@ import java.util.Map;
 public class TaskList {
     private final Map<String, List<Task>> _tasks = new LinkedHashMap<>();
     private long lastId = 0;
+    private static TaskList _instance = null;
 
-    public TaskList(){}
+    public static TaskList getInstance(){
+        if(_instance == null){
+            _instance = new TaskList();
+        }
+        return _instance;
+    }
+
+    private TaskList(){}
 
 
     public void addProject(String name){
@@ -28,17 +36,21 @@ public class TaskList {
         return _tasks.containsKey(projectName);
     }
 
-    public String setDone(String idString, boolean done){
+    public void setDone(String idString, boolean done){
         int id = Integer.parseInt(idString);
         for (Map.Entry<String, List<Task>> project : _tasks.entrySet()) {
             for (Task task : project.getValue()) {
                 if (task.getId() == id) {
                     task.setDone(done);
-                    return "";
+//                    return "";
                 }
             }
         }
-        return String.format("Could not find a task with an ID of %d.\r\n", id);
+//        return String.format("Could not find a task with an ID of %d.\r\n", id);
+    }
+
+    public void setDone(Task task, boolean done){
+        task.setDone(done);
     }
 
     public Map<String, List<Task>> getTasks() {

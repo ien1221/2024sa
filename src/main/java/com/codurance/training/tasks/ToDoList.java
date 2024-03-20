@@ -1,20 +1,19 @@
 package com.codurance.training.tasks;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import com.codurance.training.tasks.IO.Input;
 import com.codurance.training.tasks.IO.Output;
-import com.codurance.training.tasks.command.ICommand;
-import com.codurance.training.tasks.command.factory.CommandFactory;
-import com.codurance.training.tasks.taskList.TaskList;
+import com.codurance.training.tasks.adapter.CommandPresenter;
+import com.codurance.training.tasks.usecase.ICommand;
+import com.codurance.training.tasks.adapter.CommandController;
 
 public final class ToDoList implements Runnable {
     private static final String QUIT = "quit";
 
-    private final TaskList taskList = new TaskList();
+//    private final TaskList taskList = new TaskList();
     private final Output _output;
     private final Input _input;
 
@@ -42,11 +41,11 @@ public final class ToDoList implements Runnable {
     }
 
     private void execute(String commandLine) {
-        CommandFactory commandFactory = new CommandFactory();
-        ICommand command = commandFactory.createCommand(commandLine);
-        String result =  command.execute(taskList);
-        if (!result.isEmpty()){
-            _output.printResult(result);
+        CommandController commandController = new CommandController();
+        ICommand command = commandController.createCommand(commandLine);
+        CommandPresenter presenter = new CommandPresenter(command.execute());
+        if (presenter.hasResult()){
+            _output.printResult(presenter.getResult());
         }
     }
 }
