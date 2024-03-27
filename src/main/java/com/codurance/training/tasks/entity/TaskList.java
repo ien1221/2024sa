@@ -36,17 +36,6 @@ public class TaskList {
         return _tasks.containsKey(projectName);
     }
 
-    public void setDone(String idString, boolean done){
-        int id = Integer.parseInt(idString);
-        for (Map.Entry<String, List<Task>> project : _tasks.entrySet()) {
-            for (Task task : project.getValue()) {
-                if (task.getId() == id) {
-                    task.setDone(done);
-                }
-            }
-        }
-    }
-
     public void setDone(Task task, boolean done){
         task.setDone(done);
     }
